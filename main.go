@@ -219,8 +219,10 @@ func (kvMap KVMap) HasKeys(keys []string) bool {
 	return true
 }
 
-func json2kv(input []byte, into *KVMap) error {
-	if err := json.Unmarshal(input, into); err != nil {
+func json2kvmap(input []byte, into *KVMap) error {
+	decoder := json.NewDecoder(bytes.NewReader(input))
+	decoder.UseNumber()
+	if err := decoder.Decode(&into); err != nil {
 		return errors.Wrapf(err, "cannot Unmarshall input: %s", string(input))
 	}
 	return nil
@@ -284,9 +286,7 @@ func main() {
 				continue
 			}
 			kvMap := make(KVMap)
-			decoder := json.NewDecoder(bytes.NewReader(line))
-			decoder.UseNumber()
-			if err := decoder.Decode(&kvMap); err != nil {
+			if err := json2kvmap(line, &kvMap); err != nil {
 				continue
 			}
 			if !skipPostProc {
