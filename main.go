@@ -65,9 +65,9 @@ var (
 	keyOrder = []string{
 		"level",
 		"time",
+		"ts",
 		"file",
 		"func",
-		"application_id",
 		"method",
 		"path",
 		"status",
