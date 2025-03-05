@@ -1,9 +1,11 @@
-JSON Viewer
-===========
+JSON Lines Viewer
+=================
 
-Converts JSON input into key-value output.
-Keys are sorted by predefined or user-defined order which makes for consistent
-output. Important keys are printed first.
+Converts JSON lines from input into key-value output.
+
+Keys are sorted by predefined order or user-defined order 
+which makes for consistent
+output. Some important keys are printed first.
 
 Input that is not JSON is not processed and is printed as-is.
 
